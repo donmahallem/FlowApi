@@ -1,0 +1,52 @@
+{
+    "name": "flowapi",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha --timeout 10000 --check-leaks -r ts-node/register src/**/*.spec.ts",
+        "start": "npm run build:live",
+        "build:live": "nodemon",
+        "build": "node ./node_modules/typescript/bin/tsc --outdir ./dist/ --baseUrl ./src/",
+        "build:doc": "node ./node_modules/typedoc/bin/typedoc --out ./tt2/ --mode modules --exclude /**/index ./src/",
+        "test-ci_old": "nyc ts-mocha -p tsconfig.json -- --opts mocha.opts",
+        "test-ci": "nyc mocha --opts mocha.opts"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^1.18.9",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.2.2"
+    },
+    "nyc": {
+        "include": [
+            "src/*.ts",
+            "src/**/*.ts"
+        ],
+        "exclude": [
+            "typings",
+            "src/**/*.spec.ts",
+            "**/*.d.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "reporter": [
+            "json",
+            "html",
+            "text-summary",
+            "lcov"
+        ],
+        "sourceMap": true,
+        "instrument": true,
+        "all": true
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "form-data": "^2.3.3"
+    }
+}
