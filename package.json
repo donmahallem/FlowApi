@@ -16,7 +16,7 @@
     "license": "ISC",
     "devDependencies": {
         "@types/set-cookie-parser": "0.0.3",
-        "nodemon": "^1.18.9",
+        "nodemon": "^1.18.0",
         "request-debug": "^0.2.0",
         "ts-node": "^7.0.1",
         "typescript": "^3.2.2"
