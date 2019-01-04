@@ -15,7 +15,9 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@types/set-cookie-parser": "0.0.3",
         "nodemon": "^1.18.9",
+        "request-debug": "^0.2.0",
         "ts-node": "^7.0.1",
         "typescript": "^3.2.2"
     },
@@ -46,7 +48,12 @@
         "all": true
     },
     "dependencies": {
+        "@types/node": "^10.12.18",
         "axios": "^0.18.0",
-        "form-data": "^2.3.3"
+        "cookiejar": "^2.1.2",
+        "jsonschema": "^1.2.4",
+        "querystring": "^0.2.0",
+        "request": "^2.88.0",
+        "set-cookie-parser": "^2.2.1"
     }
 }
