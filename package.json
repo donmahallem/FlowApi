@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -53,5 +53,8 @@
         "querystring": "^0.2.0",
         "request": "^2.88.0",
         "set-cookie-parser": "^2.2.1"
-    }
+    },
+    "files":[
+        "dist/*"
+    ]
 }
