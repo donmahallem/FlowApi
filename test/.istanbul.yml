@@ -1,0 +1,9 @@
+instrumentation:
+  root: './src/'
+  extensions:
+    - '.ts'
+  excludes:
+    - '*.spec.js'
+    - '*.spec.ts'
+    - 'build/**/*.spec.js'
+    - 'build/**/*.spec.ts'
