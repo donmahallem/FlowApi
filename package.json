@@ -1,21 +1,30 @@
 {
-    "name": "flowapi",
-    "version": "1.0.0",
+    "name": "@donmahallem/flowapi",
+    "version": "1.0.1",
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha --timeout 10000 --check-leaks -r ts-node/register src/**/*.spec.ts",
+        "test": "mocha --opts ./test/.mocha.opts src/**/*.spec.ts --config test/config.json",
         "start": "npm run build:live",
         "build:live": "nodemon",
         "build": "node ./node_modules/typescript/bin/tsc --outdir ./dist/ --baseUrl ./src/",
         "build:doc": "node ./node_modules/typedoc/bin/typedoc --out ./tt2/ --mode modules --exclude /**/index ./src/",
         "test-ci_old": "nyc ts-mocha -p tsconfig.json -- --opts mocha.opts",
-        "test-ci": "nyc mocha --opts mocha.opts"
+        "test-ci": "nyc npm run test"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "nodemon": "^1.18.9",
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.5",
+        "@types/node": "^10.12.18",
+        "@types/set-cookie-parser": "0.0.3",
+        "chai": "^4.2.0",
+        "mocha": "^5.2.0",
+        "nodemon": "^1.18.0",
+        "nyc": "^13.1.0",
+        "request-debug": "^0.2.0",
+        "sinon": "^7.2.2",
         "ts-node": "^7.0.1",
         "typescript": "^3.2.2"
     },
@@ -46,7 +55,12 @@
         "all": true
     },
     "dependencies": {
-        "axios": "^0.18.0",
-        "form-data": "^2.3.3"
-    }
+        "jsonschema": "^1.2.4",
+        "querystring": "^0.2.0",
+        "request": "^2.88.0",
+        "set-cookie-parser": "^2.2.1"
+    },
+    "files": [
+        "dist/*"
+    ]
 }
