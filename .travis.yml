@@ -14,11 +14,12 @@ jobs:
   include:
   - stage: npm release
     node_js: '10'
-    script: npm build
+    script: npm run build
     deploy:
       provider: npm
       skip_cleanup: true
-      email: "$NPM_EMAIL"
+      email:
+        secure: AXpPnI+s/xuDYndfMY1lWgyMrR1Wa2DRrKC6dqG9PRd/yyCAclDB5R2xL48fAoHUq5uPiFdRco5sjfDNmdAHaUhO4vhKJVGRlLO4OP0J6YwywCVh0HVYEq6TZHXuzvDCG32JzRjOhKKQ8NtE1QRMe/9rFE4rW8cxxX4W9C2Tt+m9PzJONRaYiQPJi7vW9AT4hvubQn38Nde/s4n2X+NdloKo+a4LBhSfinIbzUocBWtD4aUo2N6tc7W8Ph0x2UXZ9mF+HBVdoirevD3RsRjk8ws0nXM0V4TvW9Jg5glZYfX9alsLmIv49BGC67zPPINjlZhm8pZBHrNb1vBaGUFCZfSUeiThhrGZSWoY8oLFnv3/gS9yfDpiQ96HewLawBNwcS8xDipF+iyJuwfiVAzv5rN43kSq+gJ328bofgYly/SmCb8BYTauRj/SNK+MSoPqjwuI7UwuPiclv/SsAd+9uFPNDiWyHQXja1QNAZAJjYhRG7gFcuxJ+ZvZDgPweXPY6Ynmq/+mqrcoQ79pehd3uH/dLl5/qWawUgpkjLbCb7XQ5U5AjHA3n6XaHs6R95EYfjz3CPlDdaMMBFdcLff3+DQWWB9I7emNZlT0UIH218+4XiCPWas+Fwo6/14cBspN+e2fcJ+6ZRzSS71OUmBHuVHo0PtBulJtjIyOupRZ5jE=
       api_key:
         secure: bbjihCAMITNmiI6d6WBcbTiBCkf96hh2zQYiVG+b+iCJR+RuY9M0G4tU1E9P/SpPP2+eAJdlShF4UagpSkcVy+VRb0Sjdj5OspMpgjZhruZ5MhnKqO+uqA7HajW4lXpxK4Wgbv32d5n+eIVo6F4mpqyL0zdZZuPPyG9RPbalhDx9pC1ywsMrffBDwCd4oy1eoQu9Ps6xvXI+t1bS3+mQLCWYBCvBfb/4b6vX05yYdh5jJ6i7D8v/005WdZ+aDPt+P5fwStHLOi/0U8HZoJiyrk1gpxOsMzVySwpd9vlS9Av+SNMxELbEFMWXEET2HDh7GcDkT1N75FsEFubTshAZRQBto1wpJWTVZcZpEetIUkXOqLwItZ1zV9/8xM0iqad2iElx6DiSgp2VDvOUWxYRh0WXDVOQsnKk0uMNlLGDchmppQsz2NnoDqHtm8f885hTq2NnUgp2t0gC3FtRLzeDSEMSgqWMiQQx1C1sHNpslXTrZA2KTlBvifYGd/TLs/dIEpyX0F+oDbU5A4/JVO0JT9U5yYOnG2Q/RQHDHpF0MT8Obxycj81NXnbKQp0W9L0nfGQ6UmeGphmGbIKxKM0rbV3WZgGRkpWvmzOY00YEfLiiO7ST9qX59xZt2dn9daczT+3+XXksVGNcLgs7/oKqsJKkK+XS8Ec7eAFSt3sshSM=
       on:
