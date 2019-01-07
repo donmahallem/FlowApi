@@ -1,19 +1,35 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "1.0.1",
+    "version": "1.0.4",
     "description": "",
-    "main": "index.js",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "test": "mocha --opts ./test/.mocha.opts src/**/*.spec.ts --config test/config.json",
         "start": "npm run build:live",
         "build:live": "nodemon",
-        "build": "node ./node_modules/typescript/bin/tsc --outdir ./dist/ --baseUrl ./src/",
+        "build": "tsc",
         "build:doc": "node ./node_modules/typedoc/bin/typedoc --out ./tt2/ --mode modules --exclude /**/index ./src/",
         "test-ci_old": "nyc ts-mocha -p tsconfig.json -- --opts mocha.opts",
         "test-ci": "nyc npm run test"
     },
     "author": "",
     "license": "ISC",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": [
+            "es2017",
+            "es7",
+            "es6",
+            "dom"
+        ],
+        "declaration": true,
+        "outDir": "./dist/",
+        "baseUrl": "./src/",
+        "strict": true,
+        "esModuleInterop": true
+    },
     "devDependencies": {
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.5",
@@ -61,6 +77,7 @@
         "set-cookie-parser": "^2.2.1"
     },
     "files": [
-        "dist/*"
+        "dist/*",
+        "src/*"
     ]
 }
