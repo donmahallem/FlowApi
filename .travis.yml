@@ -14,7 +14,7 @@ jobs:
   include:
   - stage: npm release
     node_js: '10'
-    script: npm build
+    script: npm run build
     deploy:
       provider: npm
       skip_cleanup: true
