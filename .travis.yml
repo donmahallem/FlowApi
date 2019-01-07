@@ -1,18 +1,21 @@
 language: node_js
 node_js:
-  - "9"
-  - "10"
+- '9'
+- '10'
 cache:
   directories:
-    - node_modules
-    - $(npm config get prefix)/node_modules
-before_install: "npm install"
-script: "npm run build && npm run test-ci"
-after_success: "npm install coveralls && cat ./coverage/lcov.info | coveralls"
+  - node_modules
+  - "$(npm config get prefix)/node_modules"
+before_install: npm install
+script: npm run build && npm run test-ci
+after_success: npm install coveralls && cat ./coverage/lcov.info | coveralls
 deploy:
   provider: npm
-  email: "YOUR_EMAIL_ADDRESS"
-  api_key: "YOUR_AUTH_TOKEN"
+  email:
+    secure: NJ5ZB9BqXfM2WOt/eb7CdZi121AxCCEFW12Urs7ev5D/GdLJOBBlJ6Q/Os3jPK386nhcAfFRAX2QjcnF3hXfbmsluhwsv7XCBaZ76GTy7Jcz/8oPG+a195eWzGGvmM7Qdny4yt3D0ZwFDhUu1ZPCJVtWJ8nEXHcEZAnZUKOJ3rxo7kMiU66aHHoJOZsqNkB091SYInh1cQ+cpkjZaWhtRu3FnhI9PBpSbkgzD7GDudBnKsOqtA7QiGM2inBVJZxpachrxDWo4S1swKGfSqO8JDVsKHcYu7Lxb5sBzrXYEbKSMjpSH09Wvk7p3lVQQ6Xps4bRu7Xw1BCUK1e+zAJIll0FAVC83WWTl6Vfjl7UtFli6vWK7b72wO/tSx3AlZdYLWDko6FaXtQIDRL1JFt7OoJpXX9C4U5nThkG0JPNrA/SVOl+zaXWZdeOZXcextNw9l+ToDHUzqNy3cSFkfm9Y7c4b2iRHjpbeZnYkBu51vJgi7rheHtdYJHSyL+5+HMvutaALIBPSsQpOr5udv/aULTNAgl20JrofsHXLNz6GstQoF+WPIXYcMUFNZ01/lTQajhDZlQSfddaNrHY0Kal9gBr/eg666cEn2LxNpgcl9dIFPm3E6iD0rPNPrqjyOK09AoiXvEE2NvJvIGYhWX+jCCIe1a+J5dM6lVC5QOTUPQ=
+  api_key:
+    secure: B37COGYjY/9Gycg/ew5dq+t22PIL6z+yIGU203FiIsgqppQ308Pp0h9IhceQxQ0i1gFD7W/3hd6MNkT1b+jQwtu2/JO3BvhzCy42cy+IC0XpG2+5qzv+zDRHjwbZm518xUEoIdyTJDnn9XSuqZ2LsLJqoHtmAV4bNzm1RuGDj1ipQ/rnqpZwJD6c6IZiZTrjH+YLy2HxDtm9NXxUd3N6W8beSQg7OT7FcnvM1k0fSnneDoo/Eb9sq33FE4wzdVyde+xhf6fTCPz8I/m1fBqRiWFjDByII3diksj1WHRY08DNYTD/KfeuHY1K2dhtDyuX2640Gbqin4Us+meaIlITo3zegXlk9lQ9trk75vyAAISfBeTva+R1qxB4hNxixbdGJDhEo0ep9akwiHotXpW0zsBbpC9SOG7jpeoEpfJ4csmxYHJrUhUn8pY2UkvvvCjYqjpZSU9EZ4YVxdrPQHC+NtbrSpFAhsEOerdWHPZeKliK3QUBaul+ihkCmW5xGdUuyUCHzxuELBhS0+XqxeLjaeD2orp08ugdnz0KCrKvQnF0YNDhSl5JQfdg6QUKDzEPk47ReKZpqa46NqlzuRXQSkjBhEuNO0ja8mwOYXBMzpY6RVAyeS0tgrZqSdtkfZ9fEJsyUK61nOEF50UJOmx/mXx44NjUYY9EgmjCccybUEU=
   on:
     tags: true
+    repo: donmahallem/FlowApi
     branch: master
