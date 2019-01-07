@@ -17,5 +17,4 @@ deploy:
     secure: B37COGYjY/9Gycg/ew5dq+t22PIL6z+yIGU203FiIsgqppQ308Pp0h9IhceQxQ0i1gFD7W/3hd6MNkT1b+jQwtu2/JO3BvhzCy42cy+IC0XpG2+5qzv+zDRHjwbZm518xUEoIdyTJDnn9XSuqZ2LsLJqoHtmAV4bNzm1RuGDj1ipQ/rnqpZwJD6c6IZiZTrjH+YLy2HxDtm9NXxUd3N6W8beSQg7OT7FcnvM1k0fSnneDoo/Eb9sq33FE4wzdVyde+xhf6fTCPz8I/m1fBqRiWFjDByII3diksj1WHRY08DNYTD/KfeuHY1K2dhtDyuX2640Gbqin4Us+meaIlITo3zegXlk9lQ9trk75vyAAISfBeTva+R1qxB4hNxixbdGJDhEo0ep9akwiHotXpW0zsBbpC9SOG7jpeoEpfJ4csmxYHJrUhUn8pY2UkvvvCjYqjpZSU9EZ4YVxdrPQHC+NtbrSpFAhsEOerdWHPZeKliK3QUBaul+ihkCmW5xGdUuyUCHzxuELBhS0+XqxeLjaeD2orp08ugdnz0KCrKvQnF0YNDhSl5JQfdg6QUKDzEPk47ReKZpqa46NqlzuRXQSkjBhEuNO0ja8mwOYXBMzpY6RVAyeS0tgrZqSdtkfZ9fEJsyUK61nOEF50UJOmx/mXx44NjUYY9EgmjCccybUEU=
   on:
     tags: true
-    repo: donmahallem/FlowApi
-    branch: master
+    repo: DonMahallem/FlowApi
