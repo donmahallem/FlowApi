@@ -2,9 +2,25 @@ export interface DaySummary {
 
     [key: string]: DayData;
 }
-
+export interface MiniGraphData {
+    calorieReportUrl: string;
+    dailyGoalReportUrl: string;
+    data: {
+        calories: TimeValuePair;
+        dailyGoal: TimeValuePair;
+        date: number;
+        distance: TimeValuePair;
+        nightLowHr: TimeValuePair;
+        sleepAverage: TimeValuePair;
+        sleepPlus: boolean;
+    },
+    distanceReportUrl: string;
+    sampleDate: number;
+    sleepAvgReportUrl: string;
+}
 export interface DayData {
     activityGraphData: ActivityGraphData;
+    miniGraphData: MiniGraphData;
 }
 export interface ActivityGraphData {
     heartRateTimelineSamples: TimeValuePair[];
