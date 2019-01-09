@@ -30,28 +30,30 @@ import * as fs from "fs";
 
 import * as jsonschema from "jsonschema";
 import { addressSchema } from "./schemas/day-summary";
-export const validateTimelineSummary = (data: DaySummary | any): jsonschema.ValidatorResult => {
-    const val: jsonschema.Validator = new jsonschema.Validator();
-    val.addSchema(addressSchema);
-    return val.validate(data, addressSchema);
-}
 
-export const validateTimelineSummaryPromise = (data: DaySummary | any): Promise<jsonschema.ValidatorResult> => {
-    return new Promise((resolve, reject) => {
-        const result: jsonschema.ValidatorResult = validateTimelineSummary(data);
-        resolve(result);
-    });
-}
+export class FlowApiValidator {
+    public static validateTimelineSummary(data: DaySummary | any): jsonschema.ValidatorResult {
+        const val: jsonschema.Validator = new jsonschema.Validator();
+        val.addSchema(addressSchema);
+        return val.validate(data, addressSchema);
+    }
 
-
-export const loadData = (filename: string): Promise<DaySummary> => {
-    return new Promise((resolve, reject) => {
-        fs.readFile(filename, (err: NodeJS.ErrnoException, data: Buffer) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(JSON.parse(data.toString("utf-8")));
-            }
+    public static validateTimelineSummaryPromise(data: DaySummary | any): Promise<jsonschema.ValidatorResult> {
+        return new Promise((resolve, reject) => {
+            const result: jsonschema.ValidatorResult = this.validateTimelineSummary(data);
+            resolve(result);
         });
-    });
+    }
+
+    public static loadData(filename: string): Promise<DaySummary> {
+        return new Promise((resolve, reject) => {
+            fs.readFile(filename, (err: NodeJS.ErrnoException, data: Buffer) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(JSON.parse(data.toString("utf-8")));
+                }
+            });
+        });
+    }
 }

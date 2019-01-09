@@ -18,13 +18,13 @@ describe("FlowApiValidator", () => {
             test2: "asdf"
         };
         before(() => {
-            stub1 = sinon.stub(flowApiValidator, "validateTimelineSummary").returns(testObj);
+            stub1 = sinon.stub(flowApiValidator.FlowApiValidator, "validateTimelineSummary").returns(testObj);
         });
         after(() => {
             stub1.restore();
         });
         it("should returnvalidateTimelineSummary hello world", () => {
-            return flowApiValidator.validateTimelineSummaryPromise(testData)
+            return flowApiValidator.FlowApiValidator.validateTimelineSummaryPromise(testData)
                 .then((data) => {
                     expect(testObj).to.deep.equal(data);
                     expect(stub1.callCount).to.equal(1);
@@ -48,7 +48,7 @@ describe("FlowApiValidator", () => {
             stub1.restore();
         });
         it("should returnvalidateTimelineSummary hello world", () => {
-            expect(flowApiValidator.validateTimelineSummary(testObj)).to.equal(false, "Must return false");
+            expect(flowApiValidator.FlowApiValidator.validateTimelineSummary(testObj)).to.equal(false, "Must return false");
             expect(stub1.callCount).to.equal(1);
             expect(stubInstance.addSchema.callCount).to.equal(1);
             expect(stubInstance.addSchema.getCall(0).args.length).to.equal(1);
