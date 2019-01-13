@@ -1,10 +1,8 @@
 import { DayData, DaySummary } from "./model";
 
 export class SummaryMerger {
-    private errorOnDuplicate: boolean;
     private data: DaySummary = {};
-    constructor(errorOnDuplicate: boolean = true) {
-        this.errorOnDuplicate = errorOnDuplicate;
+    constructor() {
     }
 
     /**
@@ -12,7 +10,9 @@ export class SummaryMerger {
      * @param day the day the key to generate from
      */
     public generateKey(day: DayData): string {
-        return "key";
+        const timestamp: number = day.miniGraphData.data.date;
+        const dateObj: Date = new Date(timestamp);
+        return dateObj.toISOString();
     }
 
     /**
@@ -20,9 +20,9 @@ export class SummaryMerger {
      * @param day the day to be added
      * @param force force insert
      */
-    public add(day: DayData, force: boolean = false): void {
-        const dayKey: string = this.generateKey(day);
-        if (this.errorOnDuplicate && this.data[dayKey] && force === false) {
+    public add(day: DayData, force: boolean = false, key: string = null): void {
+        const dayKey: string = key ? key : this.generateKey(day);
+        if (this.data[dayKey] && force === false) {
             throw new Error("Day already exists in merge");
         }
         this.data[dayKey] = day;
