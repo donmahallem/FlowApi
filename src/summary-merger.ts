@@ -28,6 +28,12 @@ export class SummaryMerger {
         this.data[dayKey] = day;
     }
 
+    public addSummary(summary: DaySummary): void {
+        for (let key of Object.keys(summary)) {
+            this.data[key] = summary[key];
+        }
+    }
+
     /**
      * Adds multiple days to the summary
      * @param days The days to be added
