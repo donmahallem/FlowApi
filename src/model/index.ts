@@ -42,3 +42,5 @@ export interface HeartRateSummary {
     nightMinimum: number;
     nightMinimumDateTime: number;
 }
+
+export * from './sleep-item';
