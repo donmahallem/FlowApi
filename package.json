@@ -5,7 +5,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "test": "mocha --opts ./test/.mocha.opts src/**/*.spec.ts",
+        "test": "mocha --opts ./test/.mocha.opts",
         "start": "npm run build:live",
         "build:live": "nodemon",
         "build": "tsc",

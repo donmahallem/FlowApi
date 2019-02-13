@@ -2,3 +2,5 @@
 --check-leaks
 --timeout 10000
 --recursive
+ src/**/*.spec.ts
+ src/*.spec.ts
