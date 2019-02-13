@@ -103,15 +103,28 @@ export class FlowApiClient {
             request.get('https://flow.polar.com/api/activity-timeline/load?day=' + _year + '-' + _month + '-' + _day + '&maxSampleCount=' + sampleCount, {
                 jar: this.cookieJar,
                 headers: {
+                    'accept': 'application/json',
                     'user-agent': 'Mozilla/5.0'
                 }
-            }, function (err, httpResponse, body) {
-                if (err) {
-                    reject(err);
-                } else {
+            }, this.createResponseHandler(resolve, reject));
+        });
+    }
+
+    public createResponseHandler(resolve, reject): request.RequestCallback {
+        return (err: any, httpResponse: request.Response, body: any) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            if (httpResponse.statusCode == 200) {
+                const contentType: string = httpResponse.headers["content-type"];
+                if (contentType && contentType.startsWith("application/json")) {
                     resolve(JSON.parse(body));
                 }
-            });
-        });
+                resolve(body);
+            } else {
+                reject(new Error("Code " + httpResponse.statusCode));
+            }
+        }
     }
 }

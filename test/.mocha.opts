@@ -1,3 +1,4 @@
 --require ts-node/register
 --check-leaks
 --timeout 10000
+--recursive
