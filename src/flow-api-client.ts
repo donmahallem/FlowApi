@@ -6,10 +6,18 @@ import { SleepNearby, SleepInterval } from "./model/sleep-item";
 
 export class FlowApiClient {
     private cookieJar: request.CookieJar = request.jar();
-
+    private mUserAgent: string = 'Mozilla/5.0';
 
     public getJar(): request.CookieJar {
         return this.cookieJar;
+    }
+
+    public get userAgent(): string {
+        return this.mUserAgent;
+    }
+
+    public set userAgent(useragent: string) {
+        this.mUserAgent = useragent;
     }
 
     /**
@@ -31,7 +39,7 @@ export class FlowApiClient {
                     //'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
                     //'content-length': querystring.stringify(data).length,
                     'accept': 'application/json',
-                    'user-agent': 'Mozilla/5.0'
+                    'user-agent': this.userAgent
                 }
             }, function (err, httpResponse, body) {
                 if (err) {
@@ -48,7 +56,7 @@ export class FlowApiClient {
             request.get('https://flow.polar.com/api/sleep/' + id, {
                 jar: this.cookieJar,
                 headers: {
-                    'user-agent': 'Mozilla/5.0'
+                    'user-agent': this.userAgent
                 }
             }, function (err, httpResponse, body) {
                 if (err) {
@@ -74,7 +82,7 @@ export class FlowApiClient {
             request.get('https://flow.polar.com/api/sleep/nights/nearby?date=' + _year + '-' + _month + '-' + _day, {
                 jar: this.cookieJar,
                 headers: {
-                    'user-agent': 'Mozilla/5.0'
+                    'user-agent': this.userAgent
                 }
             }, function (err, httpResponse, body) {
                 if (err) {
@@ -104,7 +112,7 @@ export class FlowApiClient {
                 jar: this.cookieJar,
                 headers: {
                     'accept': 'application/json',
-                    'user-agent': 'Mozilla/5.0'
+                    'user-agent': this.userAgent
                 }
             }, this.createResponseHandler(resolve, reject));
         });
