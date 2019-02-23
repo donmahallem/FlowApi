@@ -1,15 +1,14 @@
 
-import * as request from 'request';
 import {
     IDaySummary,
     ISleepInterval,
-    ISleepNearby
-} from '@donmahallem/flow-api-types';
-
+    ISleepNearby,
+} from "@donmahallem/flow-api-types";
+import * as request from "request";
 
 export class FlowApiClient {
     private cookieJar: request.CookieJar = request.jar();
-    private mUserAgent: string = 'Mozilla/5.0';
+    private mUserAgent: string = "Mozilla/5.0";
 
     public getJar(): request.CookieJar {
         return this.cookieJar;
@@ -24,43 +23,43 @@ export class FlowApiClient {
     }
 
     /**
-     * 
+     *
      * @param mail The mail used to login to flow.polar.com
      * @param password the password used to login to flow.polar.com
      */
     public signin(mail: string, password: string): Promise<request.Response> {
         const data: any = {
-            returnUrl: '/',
+            returnUrl: "/",
             email: mail,
-            password: password
+            password,
         };
         return new Promise((resolve, reject) => {
-            request.post('https://flow.polar.com/login', {
+            request.post("https://flow.polar.com/login", {
                 form: data,
                 jar: this.cookieJar,
                 headers: {
-                    //'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                    //'content-length': querystring.stringify(data).length,
-                    'accept': 'application/json',
-                    'user-agent': this.userAgent
-                }
+                    // 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    // 'content-length': querystring.stringify(data).length,
+                    "accept": "application/json",
+                    "user-agent": this.userAgent,
+                },
             }, function (err, httpResponse, body) {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(httpResponse);
                 }
-            })
+            });
         });
     }
 
     public getSleep(id: number): Promise<ISleepInterval[]> {
         return new Promise((resolve, reject) => {
-            request.get('https://flow.polar.com/api/sleep/' + id, {
+            request.get("https://flow.polar.com/api/sleep/" + id, {
                 jar: this.cookieJar,
                 headers: {
-                    'user-agent': this.userAgent
-                }
+                    "user-agent": this.userAgent,
+                },
             }, function (err, httpResponse, body) {
                 if (err) {
                     reject(err);
@@ -73,20 +72,20 @@ export class FlowApiClient {
 
     public getSleepNearby(year: number, month: number, day: number): Promise<ISleepNearby> {
         if (month < 1 || month > 12) {
-            return Promise.reject(new Error('The month must be equal to or between 1 and 12'));
+            return Promise.reject(new Error("The month must be equal to or between 1 and 12"));
         }
         if (day < 1 || day > 31) {
-            return Promise.reject(new Error('The day must be equal to or between 1 and 31'));
+            return Promise.reject(new Error("The day must be equal to or between 1 and 31"));
         }
-        const _year: string = '' + year;
-        const _month: string = (month < 10) ? ('0' + month) : ('' + month);
-        const _day: string = (day < 10) ? ('0' + day) : ('' + day);
+        const _year: string = "" + year;
+        const _month: string = (month < 10) ? ("0" + month) : ("" + month);
+        const _day: string = (day < 10) ? ("0" + day) : ("" + day);
         return new Promise((resolve, reject) => {
-            request.get('https://flow.polar.com/api/sleep/nights/nearby?date=' + _year + '-' + _month + '-' + _day, {
+            request.get("https://flow.polar.com/api/sleep/nights/nearby?date=" + _year + "-" + _month + "-" + _day, {
                 jar: this.cookieJar,
                 headers: {
-                    'user-agent': this.userAgent
-                }
+                    "user-agent": this.userAgent,
+                },
             }, function (err, httpResponse, body) {
                 if (err) {
                     reject(err);
@@ -99,24 +98,24 @@ export class FlowApiClient {
 
     public getActivityTimelineForDay(year: number, month: number, day: number, sampleCount: number = 50000): Promise<IDaySummary> {
         if (month < 1 || month > 12) {
-            return Promise.reject(new Error('The month must be equal to or between 1 and 12'));
+            return Promise.reject(new Error("The month must be equal to or between 1 and 12"));
         }
         if (day < 1 || day > 31) {
-            return Promise.reject(new Error('The day must be equal to or between 1 and 31'));
+            return Promise.reject(new Error("The day must be equal to or between 1 and 31"));
         }
         if (sampleCount < 1) {
-            return Promise.reject(new Error('Samplecount must be atleast 1'));
+            return Promise.reject(new Error("Samplecount must be atleast 1"));
         }
-        const _year: string = '' + year;
-        const _month: string = (month < 10) ? ('0' + month) : ('' + month);
-        const _day: string = (day < 10) ? ('0' + day) : ('' + day);
+        const _year: string = "" + year;
+        const _month: string = (month < 10) ? ("0" + month) : ("" + month);
+        const _day: string = (day < 10) ? ("0" + day) : ("" + day);
         return new Promise((resolve, reject) => {
-            request.get('https://flow.polar.com/api/activity-timeline/load?day=' + _year + '-' + _month + '-' + _day + '&maxSampleCount=' + sampleCount, {
+            request.get("https://flow.polar.com/api/activity-timeline/load?day=" + _year + "-" + _month + "-" + _day + "&maxSampleCount=" + sampleCount, {
                 jar: this.cookieJar,
                 headers: {
-                    'accept': 'application/json',
-                    'user-agent': this.userAgent
-                }
+                    "accept": "application/json",
+                    "user-agent": this.userAgent,
+                },
             }, this.createResponseHandler(resolve, reject));
         });
     }
@@ -128,14 +127,14 @@ export class FlowApiClient {
                 return;
             }
             if (httpResponse.statusCode == 200) {
-                const contentType: string = httpResponse.headers['content-type'];
-                if (contentType && contentType.startsWith('application/json')) {
+                const contentType: string = httpResponse.headers["content-type"];
+                if (contentType && contentType.startsWith("application/json")) {
                     resolve(JSON.parse(body));
                 }
                 resolve(body);
             } else {
-                reject(new Error('Code ' + httpResponse.statusCode));
+                reject(new Error("Code " + httpResponse.statusCode));
             }
-        }
+        };
     }
 }
