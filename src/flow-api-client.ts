@@ -1,7 +1,10 @@
 
 import * as request from 'request';
-import { DaySummary } from '@donmahallem/flow-api-types';
-import { SleepNearby, SleepInterval } from '@donmahallem/flow-api-types';
+import {
+    IDaySummary,
+    ISleepInterval,
+    ISleepNearby
+} from '@donmahallem/flow-api-types';
 
 
 export class FlowApiClient {
@@ -51,7 +54,7 @@ export class FlowApiClient {
         });
     }
 
-    public getSleep(id: number): Promise<SleepInterval[]> {
+    public getSleep(id: number): Promise<ISleepInterval[]> {
         return new Promise((resolve, reject) => {
             request.get('https://flow.polar.com/api/sleep/' + id, {
                 jar: this.cookieJar,
@@ -68,7 +71,7 @@ export class FlowApiClient {
         });
     }
 
-    public getSleepNearby(year: number, month: number, day: number): Promise<SleepNearby> {
+    public getSleepNearby(year: number, month: number, day: number): Promise<ISleepNearby> {
         if (month < 1 || month > 12) {
             return Promise.reject(new Error('The month must be equal to or between 1 and 12'));
         }
@@ -94,7 +97,7 @@ export class FlowApiClient {
         });
     }
 
-    public getActivityTimelineForDay(year: number, month: number, day: number, sampleCount: number = 50000): Promise<DaySummary> {
+    public getActivityTimelineForDay(year: number, month: number, day: number, sampleCount: number = 50000): Promise<IDaySummary> {
         if (month < 1 || month > 12) {
             return Promise.reject(new Error('The month must be equal to or between 1 and 12'));
         }
