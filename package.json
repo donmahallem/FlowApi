@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -11,7 +11,9 @@
         "build": "tsc",
         "build:doc": "node ./node_modules/typedoc/bin/typedoc --out ./tt2/ --mode modules --exclude /**/index ./src/",
         "test-ci_old": "nyc ts-mocha -p tsconfig.json -- --opts mocha.opts",
-        "test-ci": "nyc npm run test"
+        "test-ci": "nyc npm run test",
+        "lint": "tslint -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
+        "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts"
     },
     "author": "",
     "license": "ISC",
@@ -43,6 +45,7 @@
         "request-debug": "^0.2.0",
         "sinon": "^7.2.2",
         "ts-node": "^8.0.1",
+        "tslint": "^5.12.1",
         "typescript": "^3.2.2"
     },
     "nyc": {
@@ -72,7 +75,7 @@
         "all": true
     },
     "dependencies": {
-        "@donmahallem/flow-api-types": "0.0.3",
+        "@donmahallem/flow-api-types": "^1.0.0",
         "jsonschema": "^1.2.4",
         "querystring": "^0.2.0",
         "request": "^2.88.0",
