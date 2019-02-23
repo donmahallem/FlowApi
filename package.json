@@ -72,6 +72,7 @@
         "all": true
     },
     "dependencies": {
+        "@donmahallem/flow-api-types": "0.0.3",
         "jsonschema": "^1.2.4",
         "querystring": "^0.2.0",
         "request": "^2.88.0",
