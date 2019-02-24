@@ -38,6 +38,8 @@ jobs:
       local-dir: docs
       github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
       keep-history: true
+      on:
+        branch: dev
 env:
   global:
   - secure: Bi97R694A+0IdxQnXh/J+Rfg9vgFkyWnaXByYg0Vz3BVTrfKkfIikPKos9hU98/6dutV8t/+TOAbV1iG0pCoFzMZ7YibSi6mVHBdd3KHPe/IzaKx7pVJ/QgkGdxAXRhinmudxFenBhoJzL7WM/6d3U3esgjIHqzp6JaqSz3RK+XGnHxjXWvmBKtXI4KtzgVRBgtJ581UTD1YiV4KTQ4vU3HCWriEJSX+6yQGqtrdcmmnCPIvhXZ7hlXkV1t1VPwV3IWkA4EBtBviIyQAuM2Bh+IsXE9MZI7OHzWDD2X6lMUqShPsYz/nR5oMc2yfKa7kmKX5WUWnbh2wXTKbo2p5Hi210mnAqc27OYzKymef4pnlkBqZ3msoHBw2nOrDyO5477qpSxQWKOvkMLuQ/X9J7HXT31ButIH8YJqzFAUwQm7AVW+6A2hp2kF7AOOsO/WuhXjW5SfPWCIF2qFhvrGwWxR5x0bUu8/rLW0urrLFfhNII4tjX76bP092dfyjP9PJHBrNR/DUvZlqBpZkrwtbTBXH5xPtME+cRThElp5ZG9/n1KyZnSPTcN1yDuT1clRleH2A07gwPKKk2RgHv+/UoLh55mW+097f0TP1ILLdJDVhHAn+C0k8Zf5OMWFx0+XOdwXpsaPbTzb/6t59foP80brNkQg4RccT7Y2b8BG4DJ8=
