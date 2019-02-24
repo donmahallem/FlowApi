@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "description": "An api wrapper for flow.polar.com",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -97,7 +97,7 @@
         "all": true
     },
     "dependencies": {
-        "@donmahallem/flow-api-types": "^1.1.0",
+        "@donmahallem/flow-api-types": "^2.0.0",
         "jsonschema": "^1.2.4",
         "querystring": "^0.2.0",
         "request": "^2.88.0",
