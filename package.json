@@ -1,9 +1,14 @@
 {
     "name": "@donmahallem/flowapi",
     "version": "3.2.0",
-    "description": "",
+    "description": "An api wrapper for flow.polar.com",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "keywords": [
+        "flow",
+        "polar",
+        "api"
+    ],
     "scripts": {
         "test": "mocha",
         "start": "npm run build:live",
@@ -16,8 +21,23 @@
         "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
         "docs": "typedoc --options typedoc.json"
     },
-    "author": "",
-    "license": "ISC",
+    "homepage": "https://donmahallem.github.io/FlowApi/",
+    "author": {
+        "name": "donmahallem",
+        "email": "donmahallem@users.noreply.github.com",
+        "url": "https://github.com/donmahallem"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/donmahallem/FlowApi/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/donmahallem/FlowApi.git"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
