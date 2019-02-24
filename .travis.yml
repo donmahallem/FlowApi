@@ -19,6 +19,7 @@ jobs:
   - stage: npm release
     node_js: '10'
     script: npm run build
+    if: branch = master
     deploy:
       provider: npm
       skip_cleanup: true
@@ -32,6 +33,7 @@ jobs:
   - stage: github pages release
     node_js: '10'
     script: npm run docs
+    if: branch = master
     deploy:
       provider: pages
       skip-cleanup: true
