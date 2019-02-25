@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "description": "An api wrapper for flow.polar.com",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -60,7 +60,7 @@
         "@types/set-cookie-parser": "0.0.4",
         "@types/sinon": "^7.0.3",
         "chai": "^4.2.0",
-        "mocha": "^6.0.1",
+        "mocha": "^6.0.2",
         "nodemon": "^1.18.0",
         "nyc": "^13.1.0",
         "request-debug": "^0.2.0",
@@ -97,7 +97,7 @@
         "all": true
     },
     "dependencies": {
-        "@donmahallem/flow-api-types": "^2.0.0",
+        "@donmahallem/flow-api-types": "^2.0.1",
         "jsonschema": "^1.2.4",
         "querystring": "^0.2.0",
         "request": "^2.88.0",
