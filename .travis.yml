@@ -7,7 +7,9 @@ cache:
   directories:
   - node_modules
   - "$(npm config get prefix)/node_modules"
-before_install: npm install
+before_install:
+- npm install
+- npm install -g codacy-coverage
 script:
 - npm run build
 - npm run docs
@@ -15,7 +17,7 @@ script:
 after_success:
 - npm install coveralls
 - cat ./coverage/lcov.info | coveralls -v
-- curl -s https://codecov.io/bash | bash
+- codacy-coverage
 jobs:
   include:
   - stage: npm release
