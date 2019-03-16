@@ -19,8 +19,7 @@ before_install: npm install
 script:
 - npm run test:$TEST_SUITE
 after_success:
-- npm install coveralls
-- cat ./coverage/lcov.info | coveralls -v
+- test $TEST_SUITE = "unit" && ./coveralls_upload.sh
 jobs:
   include:
   - stage: npm release
