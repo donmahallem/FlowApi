@@ -19,7 +19,7 @@ before_install: npm install
 script:
 - npm run test:$TEST_SUITE
 after_success:
-- test $TEST_SUITE = "unit" && ./coveralls_upload.sh
+- ./coveralls_upload.sh
 jobs:
   include:
   - stage: npm release
