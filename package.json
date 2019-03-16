@@ -19,7 +19,10 @@
         "test-ci": "nyc npm run test",
         "lint": "tslint -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
         "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
-        "docs": "typedoc --options typedoc.json"
+        "docs": "typedoc --options typedoc.json",
+        "test:lint": "npm run lint",
+        "test:build": "npm run build",
+        "test:unit": "npm run test-ci"
     },
     "homepage": "https://donmahallem.github.io/FlowApi/",
     "author": {
