@@ -98,7 +98,7 @@ export class FlowApiClient {
     }
 
     public createBaseUrl(): URL {
-        return new URL('https://flow.polar.com/');
+        return new URL("https://flow.polar.com/");
     }
 
     public getActivityTimelineForDay(year: number,
@@ -118,9 +118,9 @@ export class FlowApiClient {
         const convMonth: string = (month < 10) ? ("0" + month) : ("" + month);
         const convDay: string = (day < 10) ? ("0" + day) : ("" + day);
         const url: URL = this.createBaseUrl();
-        url.pathname = '/api/activity-timeline/load';
-        url.searchParams.set('day', '' + convYear + "-" + convMonth + "-" + convDay);
-        url.searchParams.set('maxSampleCount', sampleCount.toString(10));
+        url.pathname = "/api/activity-timeline/load";
+        url.searchParams.set("day", "" + convYear + "-" + convMonth + "-" + convDay);
+        url.searchParams.set("maxSampleCount", sampleCount.toString(10));
         return this.get(url);
     }
 
@@ -149,8 +149,8 @@ export class FlowApiClient {
             request.post(url.toString(), {
                 headers: {
                     "accept": "application/json",
+                    "body": body,
                     "user-agent": this.userAgent,
-                    "body": body
                 },
                 jar: this.cookieJar,
             }, this.createResponseHandler(resolve, reject));
