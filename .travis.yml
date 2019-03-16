@@ -10,15 +10,13 @@ env:
   - TEST_SUITE=lint
   - TEST_SUITE=build
   - TEST_SUITE=unit
+  - TEST_SUITE=docs
 cache:
   directories:
   - node_modules
   - "$(npm config get prefix)/node_modules"
 before_install: npm install
 script:
-- echo $TEST_SUITE
-- npm run build
-- npm run docs
 - npm run test:$TEST_SUITE
 after_success:
 - npm install coveralls

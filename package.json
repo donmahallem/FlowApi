@@ -22,7 +22,8 @@
         "docs": "typedoc --options typedoc.json",
         "test:lint": "npm run lint",
         "test:build": "npm run build",
-        "test:unit": "npm run test-ci"
+        "test:unit": "npm run test-ci",
+        "test:docs": "npm run docs"
     },
     "homepage": "https://donmahallem.github.io/FlowApi/",
     "author": {
