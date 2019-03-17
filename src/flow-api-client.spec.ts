@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import 'mocha';
 import * as request from 'request';
 import * as sinon from 'sinon';
+import { URL } from "url";
 import { beforeEach } from 'mocha';
 
 describe('flow-api-client', () => {
