@@ -112,9 +112,9 @@ export class FlowApiClient {
     }
 
     public getActivityTimelineForDay(year: number,
-        month: number,
-        day: number,
-        sampleCount: number = 50000): Promise<IDaySummary> {
+                                     month: number,
+                                     day: number,
+                                     sampleCount: number = 50000): Promise<IDaySummary> {
         if (month < 1 || month > 12) {
             return Promise.reject(new Error("The month must be equal to or between 1 and 12"));
         }
@@ -153,7 +153,7 @@ export class FlowApiClient {
      */
     public post<T, B>(url: URL, body: B): Promise<T> {
         return this.toPromise(request.post(url.toString(), {
-            "body": body
+            body,
         }));
     }
 
