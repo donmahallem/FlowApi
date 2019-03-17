@@ -9,6 +9,16 @@ import * as request from "request";
 export class FlowApiClient {
     private cookieJar: request.CookieJar = request.jar();
     private mUserAgent: string = "Mozilla/5.0";
+    private requestClient: request.RequestAPI<request.Request, request.Options, request.RequiredUriUrl>;
+    constructor() {
+        this.requestClient = request.defaults({
+            headers: {
+                "accept": "application/json",
+                "user-agent": this.userAgent,
+            },
+            jar: this.cookieJar,
+        });
+    }
 
     public getJar(): request.CookieJar {
         return this.cookieJar;
@@ -124,20 +134,17 @@ export class FlowApiClient {
         return this.get(url);
     }
 
+    public toPromise<T>(req: request.Request): Promise<T> {
+        return new Promise((resolve, reject) => {
+            req.callback = this.createResponseHandler(resolve, reject);
+        });
+    }
     /**
      * Executes a get request
      * @param url url to query
      */
     public get<T>(url: URL): Promise<T> {
-        return new Promise((resolve, reject) => {
-            request.get(url.toString(), {
-                headers: {
-                    "accept": "application/json",
-                    "user-agent": this.userAgent,
-                },
-                jar: this.cookieJar,
-            }, this.createResponseHandler(resolve, reject));
-        });
+        return this.toPromise(this.requestClient.get(url.toString()));
     }
     /**
      * Executes a post request
@@ -145,16 +152,9 @@ export class FlowApiClient {
      * @param body body to send
      */
     public post<T, B>(url: URL, body: B): Promise<T> {
-        return new Promise((resolve, reject) => {
-            request.post(url.toString(), {
-                headers: {
-                    "accept": "application/json",
-                    "body": body,
-                    "user-agent": this.userAgent,
-                },
-                jar: this.cookieJar,
-            }, this.createResponseHandler(resolve, reject));
-        });
+        return this.toPromise(request.post(url.toString(), {
+            "body": body
+        }));
     }
 
     public createResponseHandler(resolve, reject): request.RequestCallback {
