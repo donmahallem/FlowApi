@@ -9,6 +9,16 @@ import * as request from "request";
 export class FlowApiClient {
     private cookieJar: request.CookieJar = request.jar();
     private mUserAgent: string = "Mozilla/5.0";
+    private requestClient: request.RequestAPI<request.Request, request.Options, request.RequiredUriUrl>;
+    constructor() {
+        this.requestClient = request.defaults({
+            headers: {
+                "accept": "application/json",
+                "user-agent": this.userAgent,
+            },
+            jar: this.cookieJar,
+        });
+    }
 
     public getJar(): request.CookieJar {
         return this.cookieJar;
@@ -97,10 +107,14 @@ export class FlowApiClient {
         });
     }
 
+    public createBaseUrl(): URL {
+        return new URL("https://flow.polar.com/");
+    }
+
     public getActivityTimelineForDay(year: number,
-                                     month: number,
-                                     day: number,
-                                     sampleCount: number = 50000): Promise<IDaySummary> {
+        month: number,
+        day: number,
+        sampleCount: number = 50000): Promise<IDaySummary> {
         if (month < 1 || month > 12) {
             return Promise.reject(new Error("The month must be equal to or between 1 and 12"));
         }
@@ -113,18 +127,34 @@ export class FlowApiClient {
         const convYear: string = "" + year;
         const convMonth: string = (month < 10) ? ("0" + month) : ("" + month);
         const convDay: string = (day < 10) ? ("0" + day) : ("" + day);
+        const url: URL = this.createBaseUrl();
+        url.pathname = "/api/activity-timeline/load";
+        url.searchParams.set("day", "" + convYear + "-" + convMonth + "-" + convDay);
+        url.searchParams.set("maxSampleCount", sampleCount.toString(10));
+        return this.get(url);
+    }
+
+    public toPromise<T>(req: request.Request): Promise<T> {
         return new Promise((resolve, reject) => {
-            const url: string = "https://flow.polar.com/api/activity-timeline/load?day="
-                + convYear + "-" + convMonth + "-" + convDay
-                + "&maxSampleCount=" + sampleCount;
-            request.get(url, {
-                headers: {
-                    "accept": "application/json",
-                    "user-agent": this.userAgent,
-                },
-                jar: this.cookieJar,
-            }, this.createResponseHandler(resolve, reject));
+            req.callback = this.createResponseHandler(resolve, reject);
         });
+    }
+    /**
+     * Executes a get request
+     * @param url url to query
+     */
+    public get<T>(url: URL): Promise<T> {
+        return this.toPromise(this.requestClient.get(url.toString()));
+    }
+    /**
+     * Executes a post request
+     * @param url url to request
+     * @param body body to send
+     */
+    public post<T, B>(url: URL, body: B): Promise<T> {
+        return this.toPromise(request.post(url.toString(), {
+            "body": body
+        }));
     }
 
     public createResponseHandler(resolve, reject): request.RequestCallback {

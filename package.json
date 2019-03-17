@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "3.2.2",
+    "version": "3.2.3",
     "description": "An api wrapper for flow.polar.com",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -19,7 +19,11 @@
         "test-ci": "nyc npm run test",
         "lint": "tslint -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
         "lint-fix": "tslint --fix -c tslint.json -e src/**/*.spec.ts src/**/*.ts",
-        "docs": "typedoc --options typedoc.json"
+        "docs": "typedoc --options typedoc.json",
+        "test:lint": "npm run lint",
+        "test:build": "npm run build",
+        "test:unit": "npm run test-ci",
+        "test:docs": "npm run docs"
     },
     "homepage": "https://donmahallem.github.io/FlowApi/",
     "author": {
@@ -56,17 +60,17 @@
     "devDependencies": {
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.5",
-        "@types/node": "^11.10.4",
+        "@types/node": "^11.11.3",
         "@types/set-cookie-parser": "0.0.4",
-        "@types/sinon": "^7.0.8",
+        "@types/sinon": "^7.0.10",
         "chai": "^4.2.0",
         "mocha": "^6.0.2",
         "nodemon": "^1.18.0",
         "nyc": "^13.1.0",
         "request-debug": "^0.2.0",
         "sinon": "^7.2.7",
-        "ts-node": "^8.0.1",
-        "tslint": "^5.13.1",
+        "ts-node": "^8.0.3",
+        "tslint": "^5.14.0",
         "typedoc": "^0.14.2",
         "typescript": "^3.2.2"
     },
@@ -97,7 +101,7 @@
         "all": true
     },
     "dependencies": {
-        "@donmahallem/flow-api-types": "^2.0.1",
+        "@donmahallem/flow-api-types": "^2.0.2",
         "jsonschema": "^1.2.4",
         "querystring": "^0.2.0",
         "request": "^2.88.0",
