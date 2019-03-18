@@ -78,11 +78,18 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="flowapiclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="flowapiclient.html#cookiejar" class="tsd-kind-icon">cookie<wbr>Jar</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="flowapiclient.html#museragent" class="tsd-kind-icon">m<wbr>User<wbr>Agent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="flowapiclient.html#requestclient" class="tsd-kind-icon">request<wbr>Client</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -94,15 +101,39 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="flowapiclient.html#createbaseurl" class="tsd-kind-icon">create<wbr>Base<wbr>Url</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="flowapiclient.html#createresponsehandler" class="tsd-kind-icon">create<wbr>Response<wbr>Handler</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="flowapiclient.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="flowapiclient.html#getactivitytimelineforday" class="tsd-kind-icon">get<wbr>Activity<wbr>Timeline<wbr>For<wbr>Day</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="flowapiclient.html#getjar" class="tsd-kind-icon">get<wbr>Jar</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="flowapiclient.html#getsleep" class="tsd-kind-icon">get<wbr>Sleep</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="flowapiclient.html#getsleepnearby" class="tsd-kind-icon">get<wbr>Sleep<wbr>Nearby</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="flowapiclient.html#post" class="tsd-kind-icon">post</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="flowapiclient.html#signin" class="tsd-kind-icon">signin</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="flowapiclient.html#topromise" class="tsd-kind-icon">to<wbr>Promise</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Flow<wbr>Api<wbr>Client<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="flowapiclient.html" class="tsd-signature-type">FlowApiClient</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L13">flow-api-client.ts:13</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="flowapiclient.html" class="tsd-signature-type">FlowApiClient</a></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
@@ -113,7 +144,7 @@
 					<div class="tsd-signature tsd-kind-icon">cookie<wbr>Jar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">request.CookieJar</span><span class="tsd-signature-symbol"> =&nbsp;request.jar()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L10">flow-api-client.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L11">flow-api-client.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -123,7 +154,17 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>User<wbr>Agent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Mozilla/5.0&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L11">flow-api-client.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L12">flow-api-client.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="requestclient" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> request<wbr>Client</h3>
+					<div class="tsd-signature tsd-kind-icon">request<wbr>Client<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">request.RequestAPI</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">request.Request</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">request.Options</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">request.RequiredUriUrl</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L13">flow-api-client.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -141,7 +182,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L17">flow-api-client.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L28">flow-api-client.ts:28</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -149,7 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L21">flow-api-client.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L32">flow-api-client.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -166,6 +207,23 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="createbaseurl" class="tsd-anchor"></a>
+					<h3>create<wbr>Base<wbr>Url</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Base<wbr>Url<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L111">flow-api-client.ts:111</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">URL</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="createresponsehandler" class="tsd-anchor"></a>
 					<h3>create<wbr>Response<wbr>Handler</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -175,7 +233,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L130">flow-api-client.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L161">flow-api-client.ts:161</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -191,6 +249,43 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="get" class="tsd-anchor"></a>
+					<h3>get</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get&lt;T&gt;<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L147">flow-api-client.ts:147</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Executes a get request</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">URL</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>url to query</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getactivitytimelineforday" class="tsd-anchor"></a>
 					<h3>get<wbr>Activity<wbr>Timeline<wbr>For<wbr>Day</h3>
@@ -201,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L100">flow-api-client.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L115">flow-api-client.ts:115</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -233,7 +328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L13">flow-api-client.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L24">flow-api-client.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">request.CookieJar</span></h4>
@@ -250,7 +345,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L56">flow-api-client.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L67">flow-api-client.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -273,7 +368,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L73">flow-api-client.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L84">flow-api-client.ts:84</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -292,6 +387,52 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="post" class="tsd-anchor"></a>
+					<h3>post</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">post&lt;T, B&gt;<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span>, body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">B</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L155">flow-api-client.ts:155</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Executes a post request</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>B</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">URL</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>url to request</p>
+									</div>
+								</li>
+								<li>
+									<h5>body: <span class="tsd-signature-type">B</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>body to send</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="signin" class="tsd-anchor"></a>
 					<h3>signin</h3>
@@ -302,7 +443,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/ab45ca6/src/flow-api-client.ts#L30">flow-api-client.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L41">flow-api-client.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -326,6 +467,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="topromise" class="tsd-anchor"></a>
+					<h3>to<wbr>Promise</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Promise&lt;T&gt;<span class="tsd-signature-symbol">(</span>req<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">request.Request</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/donmahallem/FlowApi/blob/4e30331/src/flow-api-client.ts#L138">flow-api-client.ts:138</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>req: <span class="tsd-signature-type">request.Request</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -343,17 +513,29 @@
 					<li class="current tsd-kind-class">
 						<a href="flowapiclient.html" class="tsd-kind-icon">Flow<wbr>Api<wbr>Client</a>
 						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="flowapiclient.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="flowapiclient.html#cookiejar" class="tsd-kind-icon">cookie<wbr>Jar</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="flowapiclient.html#museragent" class="tsd-kind-icon">m<wbr>User<wbr>Agent</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="flowapiclient.html#requestclient" class="tsd-kind-icon">request<wbr>Client</a>
+							</li>
 							<li class=" tsd-kind-accessor tsd-parent-kind-class">
 								<a href="flowapiclient.html#useragent" class="tsd-kind-icon">user<wbr>Agent</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="flowapiclient.html#createbaseurl" class="tsd-kind-icon">create<wbr>Base<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="flowapiclient.html#createresponsehandler" class="tsd-kind-icon">create<wbr>Response<wbr>Handler</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="flowapiclient.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="flowapiclient.html#getactivitytimelineforday" class="tsd-kind-icon">get<wbr>Activity<wbr>Timeline<wbr>For<wbr>Day</a>
@@ -367,8 +549,14 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="flowapiclient.html#getsleepnearby" class="tsd-kind-icon">get<wbr>Sleep<wbr>Nearby</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="flowapiclient.html#post" class="tsd-kind-icon">post</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="flowapiclient.html#signin" class="tsd-kind-icon">signin</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="flowapiclient.html#topromise" class="tsd-kind-icon">to<wbr>Promise</a>
 							</li>
 						</ul>
 					</li>
