@@ -5,6 +5,7 @@ import {
     ISleepNearby,
 } from "@donmahallem/flow-api-types";
 import * as request from "request";
+import { URL } from "url";
 
 export class FlowApiClient {
     private cookieJar: request.CookieJar = request.jar();
@@ -112,9 +113,9 @@ export class FlowApiClient {
     }
 
     public getActivityTimelineForDay(year: number,
-        month: number,
-        day: number,
-        sampleCount: number = 50000): Promise<IDaySummary> {
+                                     month: number,
+                                     day: number,
+                                     sampleCount: number = 50000): Promise<IDaySummary> {
         if (month < 1 || month > 12) {
             return Promise.reject(new Error("The month must be equal to or between 1 and 12"));
         }
@@ -143,17 +144,17 @@ export class FlowApiClient {
      * Executes a get request
      * @param url url to query
      */
-    public get<T>(url: URL): Promise<T> {
-        return this.toPromise(this.requestClient.get(url.toString()));
+    public get<T>(queryUrl: URL): Promise<T> {
+        return this.toPromise(this.requestClient.get(queryUrl.toString()));
     }
     /**
      * Executes a post request
      * @param url url to request
      * @param body body to send
      */
-    public post<T, B>(url: URL, body: B): Promise<T> {
-        return this.toPromise(request.post(url.toString(), {
-            "body": body
+    public post<T, B>(queryUrl: URL, body: B): Promise<T> {
+        return this.toPromise(this.requestClient.post(queryUrl.toString(), {
+            body,
         }));
     }
 
