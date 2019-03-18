@@ -158,7 +158,7 @@ export class FlowApiClient {
         }));
     }
 
-    public createResponseHandler(resolve, reject): request.RequestCallback {
+    public createResponseHandler(resolve: (value: any) => void, reject: (err?: any) => void): request.RequestCallback {
         return (err: any, httpResponse: request.Response, body: any) => {
             if (err) {
                 reject(err);
