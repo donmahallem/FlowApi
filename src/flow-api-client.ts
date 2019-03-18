@@ -144,21 +144,21 @@ export class FlowApiClient {
      * Executes a get request
      * @param url url to query
      */
-    public get<T>(url: URL): Promise<T> {
-        return this.toPromise(this.requestClient.get(url.toString()));
+    public get<T>(queryUrl: URL): Promise<T> {
+        return this.toPromise(this.requestClient.get(queryUrl.toString()));
     }
     /**
      * Executes a post request
      * @param url url to request
      * @param body body to send
      */
-    public post<T, B>(url: URL, body: B): Promise<T> {
-        return this.toPromise(request.post(url.toString(), {
+    public post<T, B>(queryUrl: URL, body: B): Promise<T> {
+        return this.toPromise(this.requestClient.post(queryUrl.toString(), {
             body,
         }));
     }
 
-    public createResponseHandler(resolve, reject): request.RequestCallback {
+    public createResponseHandler(resolve: (value: any) => void, reject: (err?: any) => void): request.RequestCallback {
         return (err: any, httpResponse: request.Response, body: any) => {
             if (err) {
                 reject(err);
