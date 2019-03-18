@@ -95,5 +95,57 @@ describe('flow-api-client', () => {
                 });
             });
         });
+        describe('toPromise<T>(req: request.Request)', () => {
+            let createRespHandlerStub: sinon.SinonStub;
+            let sandbox: sinon.SinonSandbox;
+            let instance: flowApiClient.FlowApiClient;
+            interface TestRequest {
+                callback?: (a?, b?, c?) => void;
+            }
+            before('init classes', () => {
+                sandbox = sinon.createSandbox();
+                instance = new flowApiClient.FlowApiClient();
+                createRespHandlerStub = sandbox.stub(instance, 'createResponseHandler');
+                createRespHandlerStub.callsFake((a, b) => {
+                    return (c, d, e) => {
+                        if (c) {
+                            setTimeout(a.bind(a, c));
+                        } else {
+                            setTimeout(b.bind(a, d));
+                        }
+                    }
+                });
+            });
+            let testRequest: TestRequest;
+            let prom: Promise<any>;
+            beforeEach('create test items', () => {
+                testRequest = {};
+                prom = instance.toPromise(testRequest);
+            })
+            afterEach('reset stubs', () => {
+                sandbox.resetHistory();
+            });
+            after('restore all', () => {
+                sandbox.restore();
+            });
+            ['value1', 'value2'].forEach((testValue) => {
+                it('should finish successfully with "' + testValue + '"', () => {
+                    testRequest.callback(testValue)
+                    return prom.then((res) => {
+                        expect(res).to.equal(testValue);
+                        expect(testRequest.callback).to.not.be.undefined;
+                    });
+                });
+                it('should fail with "' + testValue + '"', () => {
+                    testRequest.callback(undefined, testValue)
+                    return prom.then((res) => {
+                        throw new Error('should not be called');
+                    }, (err) => {
+                        expect(err).to.equal(testValue);
+                        expect(testRequest.callback).to.not.be.undefined;
+                    });
+                });
+            });
+        });
     });
 });
