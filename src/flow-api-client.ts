@@ -51,20 +51,9 @@ export class FlowApiClient {
     }
 
     public getSleep(id: number): Promise<ISleepInterval[]> {
-        return new Promise((resolve, reject) => {
-            request.get("https://flow.polar.com/api/sleep/" + id, {
-                headers: {
-                    "user-agent": this.userAgent,
-                },
-                jar: this.cookieJar,
-            }, (err, httpResponse, body) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(JSON.parse(body));
-                }
-            });
-        });
+        const getSleepUrl: URL = this.createBaseUrl();
+        getSleepUrl.pathname = "/api/sleep/" + id;
+        return this.get(getSleepUrl);
     }
 
     public getSleepNearby(date: FlowDate): Promise<ISleepNearby> {
