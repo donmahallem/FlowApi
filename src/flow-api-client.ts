@@ -1,5 +1,6 @@
 
 import {
+    FlowDate,
     IDaySummary,
     ISleepInterval,
     ISleepNearby,
@@ -21,7 +22,7 @@ export class FlowApiClient {
         });
     }
 
-    public getJar(): request.CookieJar {
+    public get jar(): request.CookieJar {
         return this.cookieJar;
     }
 
@@ -44,93 +45,33 @@ export class FlowApiClient {
             password,
             returnUrl: "/",
         };
-        return new Promise((resolve, reject) => {
-            request.post("https://flow.polar.com/login", {
-                form: data,
-                headers: {
-                    // 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                    // 'content-length': querystring.stringify(data).length,
-                    "accept": "application/json",
-                    "user-agent": this.userAgent,
-                },
-                jar: this.cookieJar,
-            }, (err, httpResponse, body) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(httpResponse);
-                }
-            });
-        });
+        return this.toPromise(request.post("https://flow.polar.com/login", {
+            form: data,
+        }));
     }
 
-    public getSleep(id: number): Promise<ISleepInterval[]> {
-        return new Promise((resolve, reject) => {
-            request.get("https://flow.polar.com/api/sleep/" + id, {
-                headers: {
-                    "user-agent": this.userAgent,
-                },
-                jar: this.cookieJar,
-            }, (err, httpResponse, body) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(JSON.parse(body));
-                }
-            });
-        });
+    public getSleep(id: number | string): Promise<ISleepInterval[]> {
+        const getSleepUrl: URL = this.createBaseUrl();
+        getSleepUrl.pathname = "/api/sleep/" + id;
+        return this.get(getSleepUrl);
     }
 
-    public getSleepNearby(year: number, month: number, day: number): Promise<ISleepNearby> {
-        if (month < 1 || month > 12) {
-            return Promise.reject(new Error("The month must be equal to or between 1 and 12"));
-        }
-        if (day < 1 || day > 31) {
-            return Promise.reject(new Error("The day must be equal to or between 1 and 31"));
-        }
-        const convYear: string = "" + year;
-        const convMonth: string = (month < 10) ? ("0" + month) : ("" + month);
-        const convDay: string = (day < 10) ? ("0" + day) : ("" + day);
-        return new Promise((resolve, reject) => {
-            request.get("https://flow.polar.com/api/sleep/nights/nearby?date=" + convYear
-                + "-" + convMonth + "-" + convDay, {
-                    headers: {
-                        "user-agent": this.userAgent,
-                    },
-                    jar: this.cookieJar,
-                }, (err, httpResponse, body) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(JSON.parse(body));
-                    }
-                });
-        });
+    public getSleepNearby(date: FlowDate): Promise<ISleepNearby> {
+        const url: URL = this.createBaseUrl();
+        url.pathname = "/api/sleep/nights/nearby";
+        url.searchParams.set("date", date.toString());
+        return this.get(url);
     }
 
     public createBaseUrl(): URL {
         return new URL("https://flow.polar.com/");
     }
 
-    public getActivityTimelineForDay(year: number,
-                                     month: number,
-                                     day: number,
+    public getActivityTimelineForDay(date: FlowDate,
                                      sampleCount: number = 50000): Promise<IDaySummary> {
-        if (month < 1 || month > 12) {
-            return Promise.reject(new Error("The month must be equal to or between 1 and 12"));
-        }
-        if (day < 1 || day > 31) {
-            return Promise.reject(new Error("The day must be equal to or between 1 and 31"));
-        }
-        if (sampleCount < 1) {
-            return Promise.reject(new Error("Samplecount must be atleast 1"));
-        }
-        const convYear: string = "" + year;
-        const convMonth: string = (month < 10) ? ("0" + month) : ("" + month);
-        const convDay: string = (day < 10) ? ("0" + day) : ("" + day);
         const url: URL = this.createBaseUrl();
         url.pathname = "/api/activity-timeline/load";
-        url.searchParams.set("day", "" + convYear + "-" + convMonth + "-" + convDay);
+        url.searchParams.set("day", date.toString());
         url.searchParams.set("maxSampleCount", sampleCount.toString(10));
         return this.get(url);
     }

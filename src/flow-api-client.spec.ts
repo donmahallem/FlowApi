@@ -6,6 +6,7 @@ import * as request from 'request';
 import * as sinon from 'sinon';
 import { URL } from "url";
 import { beforeEach } from 'mocha';
+import { FlowDate } from '@donmahallem/flow-api-types';
 
 describe('flow-api-client', () => {
     describe('FlowApiClient', () => {
@@ -144,6 +145,157 @@ describe('flow-api-client', () => {
                         expect(err).to.equal(testValue);
                         expect(testRequest.callback).to.not.be.undefined;
                     });
+                });
+            });
+        });
+        describe('getActivityTimelineForDay(date: FlowDate, sampleCount: number)', () => {
+            let createBaseUrlStub: sinon.SinonStub;
+            let getStub: sinon.SinonStub;
+            let sandbox: sinon.SinonSandbox;
+            let instance: flowApiClient.FlowApiClient;
+            const testDomain: string = 'http://test.domain';
+            before('init classes', () => {
+                sandbox = sinon.createSandbox();
+                instance = new flowApiClient.FlowApiClient();
+                createBaseUrlStub = sandbox.stub(instance, 'createBaseUrl');
+                getStub = sandbox.stub(instance, 'get');
+                createBaseUrlStub.returns(new URL(testDomain));
+            });
+            afterEach('reset stubs', () => {
+                sandbox.resetHistory();
+            });
+            after('restore all', () => {
+                sandbox.restore();
+            });
+            const testDates: FlowDate[] = [
+                new FlowDate(1234, 4, 12),
+                new FlowDate(2390, 9, 6),
+                new FlowDate(2512, 8, 15)
+            ]
+            describe('with default parameters', () => {
+                testDates.forEach((testDate) => {
+                    [2, 4, 8, 16].forEach((testSample) => {
+                        it('should finish successfully with "' + testDate + '" and "' + testSample + '"', () => {
+                            getStub.resolves(testDate);
+                            const testUrl: URL = new URL(testDomain);
+                            testUrl.pathname = "/api/activity-timeline/load";
+                            testUrl.searchParams.set("day", testDate.toString());
+                            testUrl.searchParams.set("maxSampleCount", "" + testSample);
+                            return instance.getActivityTimelineForDay(testDate, testSample)
+                                .then((value) => {
+                                    expect(value).to.equal(testDate);
+                                    expect(getStub.callCount).to.equal(1);
+                                    expect(getStub.getCall(0).args).to.deep.equal([testUrl]);
+                                });
+                        });
+                    });
+                });
+            });
+            describe('without default parameters', () => {
+                testDates.forEach((testDate) => {
+                    it('should finish successfully with "' + testDate + '"', () => {
+                        getStub.resolves(testDate);
+                        const testUrl: URL = new URL(testDomain);
+                        testUrl.pathname = "/api/activity-timeline/load";
+                        testUrl.searchParams.set("day", testDate.toString());
+                        testUrl.searchParams.set("maxSampleCount", "50000");
+                        return instance.getActivityTimelineForDay(testDate)
+                            .then((value) => {
+                                expect(value).to.equal(testDate);
+                                expect(getStub.callCount).to.equal(1);
+                                expect(getStub.getCall(0).args).to.deep.equal([testUrl]);
+                            });
+                    });
+                });
+            });
+        });
+        describe('getSleepNearby(date: FlowDate)', () => {
+            let createBaseUrlStub: sinon.SinonStub;
+            let getStub: sinon.SinonStub;
+            let sandbox: sinon.SinonSandbox;
+            let instance: flowApiClient.FlowApiClient;
+            const testDomain: string = 'http://test.domain';
+            before('init classes', () => {
+                sandbox = sinon.createSandbox();
+                instance = new flowApiClient.FlowApiClient();
+                createBaseUrlStub = sandbox.stub(instance, 'createBaseUrl');
+                getStub = sandbox.stub(instance, 'get');
+                createBaseUrlStub.returns(new URL(testDomain));
+            });
+            afterEach('reset stubs', () => {
+                sandbox.resetHistory();
+            });
+            after('restore all', () => {
+                sandbox.restore();
+            });
+            const testDates: FlowDate[] = [
+                new FlowDate(1234, 4, 12),
+                new FlowDate(2390, 9, 6),
+                new FlowDate(2512, 8, 15)
+            ]
+            testDates.forEach((testDate) => {
+                it('should finish successfully with "' + testDate + '"', () => {
+                    getStub.resolves(testDate);
+                    const testUrl: URL = new URL(testDomain);
+                    testUrl.pathname = "/api/sleep/nights/nearby";
+                    testUrl.searchParams.set("date", testDate.toString());
+                    return instance.getSleepNearby(testDate)
+                        .then((value) => {
+                            expect(value).to.equal(testDate);
+                            expect(getStub.callCount).to.equal(1);
+                            expect(getStub.getCall(0).args).to.deep.equal([testUrl]);
+                        });
+                });
+            });
+        });
+        describe('getSleep(id: number)', () => {
+            let createBaseUrlStub: sinon.SinonStub;
+            let getStub: sinon.SinonStub;
+            let sandbox: sinon.SinonSandbox;
+            let instance: flowApiClient.FlowApiClient;
+            const testDomain: string = 'http://test.domain';
+            before('init classes', () => {
+                sandbox = sinon.createSandbox();
+                instance = new flowApiClient.FlowApiClient();
+                createBaseUrlStub = sandbox.stub(instance, 'createBaseUrl');
+                getStub = sandbox.stub(instance, 'get');
+                createBaseUrlStub.returns(new URL(testDomain));
+            });
+            afterEach('reset stubs', () => {
+                sandbox.resetHistory();
+            });
+            after('restore all', () => {
+                sandbox.restore();
+            });
+            const testIds: string[] = [
+                'id1',
+                'id3',
+                'id2'
+            ];
+            testIds.forEach((testId) => {
+                it('should finish successfully with "' + testId + '"', () => {
+                    getStub.resolves(testId);
+                    const testUrl: URL = new URL(testDomain);
+                    testUrl.pathname = "/api/sleep/" + testId;
+                    return instance.getSleep(testId)
+                        .then((value) => {
+                            expect(value).to.equal(testId);
+                            expect(getStub.callCount).to.equal(1);
+                            expect(getStub.getCall(0).args).to.deep.equal([testUrl]);
+                        });
+                });
+            });
+        });
+        describe('jar - getter', () => {
+            let instance: flowApiClient.FlowApiClient;
+            before('init classes', () => {
+                instance = new flowApiClient.FlowApiClient();
+            });
+            [1, 2, 3].forEach((testId) => {
+                it('should get "test' + testId + '"', () => {
+                    const combinedTestValue: string = 'test' + testId;
+                    (<any>instance).cookieJar = combinedTestValue;
+                    expect(instance.jar).to.equal(combinedTestValue);
                 });
             });
         });
