@@ -26,7 +26,7 @@ cache:
   - node_modules
   - "$(npm config get prefix)/node_modules"
 before_install:
-- npm install @donmahallem/flow-api-types --no-save
+- npm install @donmahallem/flow-api-types -g
 script:
 - npm run test:$TEST_SUITE
 after_success:
