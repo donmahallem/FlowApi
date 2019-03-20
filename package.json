@@ -99,12 +99,14 @@
         "all": true
     },
     "dependencies": {
-        "@donmahallem/flow-api-types": "^2.0.2",
         "jsonschema": "^1.2.4",
         "request": "^2.88.0"
     },
     "files": [
         "dist/*",
         "src/*"
-    ]
+    ],
+    "peerDependencies": {
+        "@donmahallem/flow-api-types": "^2.0.2"
+    }
 }
