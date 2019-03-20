@@ -22,7 +22,7 @@ export class FlowApiClient {
         });
     }
 
-    public getJar(): request.CookieJar {
+    public get jar(): request.CookieJar {
         return this.cookieJar;
     }
 
@@ -50,7 +50,7 @@ export class FlowApiClient {
         }));
     }
 
-    public getSleep(id: number): Promise<ISleepInterval[]> {
+    public getSleep(id: number | string): Promise<ISleepInterval[]> {
         const getSleepUrl: URL = this.createBaseUrl();
         getSleepUrl.pathname = "/api/sleep/" + id;
         return this.get(getSleepUrl);
