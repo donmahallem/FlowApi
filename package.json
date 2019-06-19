@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "4.0.1",
+    "version": "4.1.0",
     "description": "An api wrapper for flow.polar.com",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
