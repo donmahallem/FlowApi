@@ -62,6 +62,17 @@ export class FlowApiClient {
         url.searchParams.set("date", date.toString());
         return this.get(url);
     }
+    public getHistory(from: FlowDate, to: FlowDate, userId, types?: number[]): Promise<ISleepNearby> {
+        const url: URL = this.createBaseUrl();
+        url.pathname = "/api/training/history";
+        const reqBody: any = {
+            fromDate: from.toString(),
+            sportIds: types,
+            toDate: to.toString(),
+            userId,
+        };
+        return this.post(url, reqBody);
+    }
 
     public createBaseUrl(): URL {
         return new URL("https://flow.polar.com/");
