@@ -2,6 +2,7 @@
 import {
     FlowDate,
     IDaySummary,
+    IHistoryItem,
     ISleepInterval,
     ISleepNearby,
 } from "@donmahallem/flow-api-types";
@@ -62,7 +63,7 @@ export class FlowApiClient {
         url.searchParams.set("date", date.toString());
         return this.get(url);
     }
-    public getHistory(from: FlowDate, to: FlowDate, userId, types?: number[]): Promise<ISleepNearby> {
+    public getHistory(from: FlowDate, to: FlowDate, userId, types?: number[]): Promise<IHistoryItem[]> {
         const url: URL = this.createBaseUrl();
         url.pathname = "/api/training/history";
         const reqBody: any = {

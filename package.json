@@ -107,6 +107,6 @@
         "src/*"
     ],
     "peerDependencies": {
-        "@donmahallem/flow-api-types": "^2.0.2"
+        "@donmahallem/flow-api-types": "^2.2.0"
     }
 }
