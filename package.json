@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "4.1.0",
+    "version": "4.1.1",
     "description": "An api wrapper for flow.polar.com",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -58,19 +58,19 @@
         "esModuleInterop": true
     },
     "devDependencies": {
-        "@types/chai": "^4.1.7",
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^12.0.8",
-        "@types/sinon": "^7.0.13",
-        "chai": "^4.2.0",
-        "mocha": "^6.1.4",
-        "nodemon": "^1.19.1",
-        "nyc": "^14.1.1",
-        "sinon": "^7.3.2",
-        "ts-node": "^8.3.0",
-        "tslint": "^5.17.0",
-        "typedoc": "^0.14.2",
-        "typescript": "^3.5.2"
+        "@types/chai": "~4.2.2",
+        "@types/mocha": "~5.2.7",
+        "@types/node": "~12.7.3",
+        "@types/sinon": "~7.0.13",
+        "chai": "~4.2.0",
+        "mocha": "~6.2.0",
+        "nodemon": "~1.19.2",
+        "nyc": "~14.1.1",
+        "sinon": "~7.4.2",
+        "ts-node": "~8.4.1",
+        "tslint": "~5.20.0",
+        "typedoc": "~0.15.0",
+        "typescript": "~3.6.3"
     },
     "nyc": {
         "include": [
@@ -99,14 +99,14 @@
         "all": true
     },
     "dependencies": {
-        "jsonschema": "^1.2.4",
-        "request": "^2.88.0"
+        "jsonschema": "~1.2.4",
+        "request": "~2.88.0"
     },
     "files": [
         "dist/*",
         "src/*"
     ],
     "peerDependencies": {
-        "@donmahallem/flow-api-types": "^2.2.0"
+        "@donmahallem/flow-api-types": "~2.2.0"
     }
 }
