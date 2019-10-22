@@ -62,7 +62,7 @@
             {
                 "match": "Source \\S+",
                 "allow-single-line-comments": true,
-                "default": "Source https://github.com/donmahallem/TrapezeApiTypes",
+                "default": "Source https://github.com/donmahallem/FlowApi",
                 "enforce-trailing-newline": false
             }
         ],
