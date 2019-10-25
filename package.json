@@ -1,6 +1,6 @@
 {
     "name": "@donmahallem/flowapi",
-    "version": "4.1.1",
+    "version": "4.1.2",
     "description": "An api wrapper for flow.polar.com",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -58,19 +58,19 @@
         "esModuleInterop": true
     },
     "devDependencies": {
-        "@types/chai": "~4.2.2",
+        "@types/chai": "~4.2.4",
         "@types/mocha": "~5.2.7",
-        "@types/node": "~12.7.3",
-        "@types/sinon": "~7.0.13",
+        "@types/node": "~12.11.7",
+        "@types/sinon": "~7.5.0",
         "chai": "~4.2.0",
-        "mocha": "~6.2.0",
-        "nodemon": "~1.19.2",
+        "mocha": "~6.2.2",
+        "nodemon": "~1.19.4",
         "nyc": "~14.1.1",
-        "sinon": "~7.4.2",
+        "sinon": "~7.5.0",
         "ts-node": "~8.4.1",
         "tslint": "~5.20.0",
         "typedoc": "~0.15.0",
-        "typescript": "~3.6.3"
+        "typescript": "~3.6.4"
     },
     "nyc": {
         "include": [
