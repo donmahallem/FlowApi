@@ -10,14 +10,15 @@ import {
     ISleepNearby,
 } from "@donmahallem/flow-api-types";
 import * as request from "request";
+import * as requestPromise from "request-promise-native";
 import { URL } from "url";
 
 export class FlowApiClient {
     private cookieJar: request.CookieJar = request.jar();
     private mUserAgent: string = "Mozilla/5.0";
-    private requestClient: request.RequestAPI<request.Request, request.Options, request.RequiredUriUrl>;
+    private requestClient: requestPromise.RequestPromiseAPI;
     constructor() {
-        this.requestClient = request.defaults({
+        this.requestClient = requestPromise.defaults({
             headers: {
                 "accept": "application/json",
                 "user-agent": this.userAgent,
@@ -49,9 +50,16 @@ export class FlowApiClient {
             password,
             returnUrl: "/",
         };
-        return this.toPromise(request.post("https://flow.polar.com/login", {
+        return this.requestClient.post({
             form: data,
-        }));
+            uri: "https://flow.polar.com/login",
+        })
+            .catch((err) => {
+                if (err && err.response && err.response.statusCode === 303) {
+                    return Promise.resolve(err.response);
+                }
+                return Promise.reject(err);
+            });
     }
 
     public getSleep(id: number | string): Promise<ISleepInterval[]> {
@@ -90,18 +98,12 @@ export class FlowApiClient {
         url.searchParams.set("maxSampleCount", sampleCount.toString(10));
         return this.get(url);
     }
-
-    public toPromise<T>(req: request.Request): Promise<T> {
-        return new Promise((resolve, reject) => {
-            req.callback = this.createResponseHandler(resolve, reject);
-        });
-    }
     /**
      * Executes a get request
      * @param url url to query
      */
     public get<T>(queryUrl: URL): Promise<T> {
-        return this.toPromise(this.requestClient.get(queryUrl.toString()));
+        return this.requestClient.get(queryUrl.toString());
     }
     /**
      * Executes a post request
@@ -109,26 +111,9 @@ export class FlowApiClient {
      * @param body body to send
      */
     public post<T, B>(queryUrl: URL, body: B): Promise<T> {
-        return this.toPromise(this.requestClient.post(queryUrl.toString(), {
+        return this.requestClient.post(queryUrl.toString(), {
             body,
-        }));
+        });
     }
 
-    public createResponseHandler(resolve: (value: any) => void, reject: (err?: any) => void): request.RequestCallback {
-        return (err: any, httpResponse: request.Response, body: any) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            if (httpResponse.statusCode === 200) {
-                const contentType: string = httpResponse.headers["content-type"];
-                if (contentType && contentType.startsWith("application/json")) {
-                    resolve(JSON.parse(body));
-                }
-                resolve(body);
-            } else {
-                reject(new Error("Code " + httpResponse.statusCode));
-            }
-        };
-    }
 }
