@@ -8,6 +8,7 @@ import {
     IHistoryItem,
     ISleepInterval,
     ISleepNearby,
+    ISleepReport,
 } from "@donmahallem/flow-api-types";
 import * as request from "request";
 import * as requestPromise from "request-promise-native";
@@ -73,6 +74,11 @@ export class FlowApiClient {
         url.pathname = "/api/sleep/nights/nearby";
         url.searchParams.set("date", date.toString());
         return this.get(url);
+    }
+
+    public getSleepReport(from: FlowDate, to: FlowDate): Promise<ISleepReport[]> {
+        return this.requestClient.get("https://sleep.flow-prd.api.polar.com/api/sleep/report?from=" +
+            from.toString() + "&to=" + to.toString());
     }
     public getHistory(from: FlowDate, to: FlowDate, userId, types?: number[]): Promise<IHistoryItem[]> {
         const url: URL = this.createBaseUrl();
